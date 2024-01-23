@@ -1,0 +1,298 @@
+// import React, { useState } from 'react';
+
+// const YourComponent = () => {
+//   const [items, setItems] = useState([
+//     { itemName: 'Item 1', salesRate: 10, count: 0 },
+//     { itemName: 'Item 2', salesRate: 20, count: 0 },
+//     // Add more items as needed
+//   ]);
+
+//   const handleIncrement = (index) => {
+//     const updatedItems = [...items];
+//     updatedItems[index].count += 1;
+//     setItems(updatedItems);
+//   };
+
+//   const handleDecrement = (index) => {
+//     const updatedItems = [...items];
+//     if (updatedItems[index].count > 0) {
+//       updatedItems[index].count -= 1;
+//       setItems(updatedItems);
+//     }
+//   };
+
+//   return (
+//     <div>
+//       {items.map((item, index) => (
+//         <div
+//           key={index}
+//           className="w-full h-[80px] flex justify-center items-center rounded-md"
+//         >
+//           {/* Item details */}
+//           {/* ... (Your existing JSX for item details) ... */}
+
+//           <div className="w-[25%] h-full flex flex-row">
+//             {/* Increment button */}
+//             <div className="w-full h-full bg-gray-200 flex justify-center items-center p-2">
+//               <button
+//                 onClick={() => handleIncrement(index)}
+//                 className="bg-green-600 rounded-md"
+//               >
+//                 {/* Plus icon */}
+//               </button>
+//             </div>
+//             {/* Decrement button */}
+//             <div className="w-full h-full bg-gray-200 flex justify-center items-center rounded-r-md p-2">
+//               <button
+//                 disabled={!item.count}
+//                 onClick={() => handleDecrement(index)}
+//                 className="bg-red-600 rounded-md"
+//               >
+//                 {/* Minus icon */}
+//               </button>
+//             </div>
+//           </div>
+//         </div>
+//       ))}
+//     </div>
+//   );
+// };
+
+// export default YourComponent;
+
+
+
+// import React, { useState } from 'react';
+
+// const MyComponent = () => {
+//   const [items, setItems] = useState([
+//     { id: 1, itemName: 'Item 1', salesRate: 10, count: 0 },
+//     { id: 2, itemName: 'Item 2', salesRate: 20, count: 0 },
+//     // Add more items as needed
+//   ]);
+
+//   const handleIncrement = (id) => {
+//     const updatedItems = items.map((item) =>
+//       item.id === id ? { ...item, count: item.count + 1 } : item
+//     );
+//     setItems(updatedItems);
+//   };
+
+//   const handleDecrement = (id) => {
+//     const updatedItems = items.map((item) =>
+//       item.id === id && item.count > 0 ? { ...item, count: item.count - 1 } : item
+//     );
+//     setItems(updatedItems);
+//   };
+
+//   const handleRemoveItem = (id) => {
+//     const updatedItems = items.filter((item) => item.id !== id);
+//     setItems(updatedItems);
+//   };
+
+//   return (
+//     <div>
+//       {items.map((item) => (
+//         <div key={item.id} className="w-full h-[80px] flex justify-center items-center rounded-md">
+//           {/* Item details */}
+//           <div className="w-[75%] h-full bg-sky-100 rounded-l-md p-4">
+//             <div className="w-full h-full flex flex-col ">
+//               <div className="w-full flex flex-col border-b">
+//                 <p className="text-xl text flex flex-col">{item.itemName}</p>
+//               </div>
+//               <div className="w-full h-full flex justify-center items-center">
+//                 <p className="">{item.count} x {item.salesRate} = {item.count * item.salesRate}</p>
+//               </div>
+//             </div>
+//           </div>
+
+//           {/* Increment and Decrement buttons */}
+//           <div className="w-[25%] h-full flex flex-row ">
+//             <div className="w-full h-full bg-gray-200 flex justify-center items-center p-2">
+//               <button onClick={() => handleIncrement(item.id)} className="bg-green-600 rounded-md">
+//                 {/* Plus icon */}
+//               </button>
+//             </div>
+//             <div className="w-full h-full bg-gray-200 flex justify-center items-center rounded-r-md p-2">
+//               <button disabled={!item.count} onClick={() => handleDecrement(item.id)} className="bg-red-600 rounded-md">
+//                 {/* Minus icon */}
+//               </button>
+//             </div>
+//           </div>
+
+//           {/* Remove button */}
+//           <div className="w-[5%] h-full bg-gray-200 flex justify-center items-center p-2">
+//             <button onClick={() => handleRemoveItem(item.id)} className="bg-blue-600 rounded-md">
+//               {/* Remove icon */}
+//             </button>
+//           </div>
+//         </div>
+//       ))}
+//     </div>
+//   );
+// };
+
+// export default MyComponent;
+
+// import React, { useState } from 'react';
+
+// const MyComponent = () => {
+//   const [items, setItems] = useState([
+//     { id: 1, itemName: 'Item 1', salesRate: 10 },
+//     { id: 2, itemName: 'Item 2', salesRate: 20 },
+//     // Add more items as needed
+//   ]);
+
+//   const [itemCounts, setItemCounts] = useState({});
+
+//   const handleIncrement = (id) => {
+//     const newCount = itemCounts[id] ? itemCounts[id] + 1 : 1;
+//     const updatedCounts = { ...itemCounts, [id]: newCount };
+//     setItemCounts(updatedCounts);
+//   };
+
+//   const handleDecrement = (id) => {
+//     if (itemCounts[id] && itemCounts[id] > 0) {
+//       const updatedCounts = { ...itemCounts, [id]: itemCounts[id] - 1 };
+//       setItemCounts(updatedCounts);
+//     }
+//   };
+
+//   const handleRemoveItem = (id) => {
+//     const updatedItems = items.filter((item) => item.id !== id);
+//     const { [id]: removedItem, ...restCounts } = itemCounts;
+//     setItems(updatedItems);
+//     setItemCounts(restCounts);
+//   };
+
+//   return (
+//     <div>
+//       {items.map((item) => (
+//         <div key={item.id} className="w-full h-[80px] flex justify-center items-center rounded-md">
+//           {/* Item details */}
+//           <div className="w-[75%] h-full bg-sky-100 rounded-l-md p-4">
+//             <div className="w-full h-full flex flex-col">
+//               <div className="w-full flex flex-col border-b">
+//                 <p className="text-xl text flex flex-col">{item.itemName}</p>
+//               </div>
+//               <div className="w-full h-full flex justify-center items-center">
+//                 <p className="">{itemCounts[item.id] || 0} x {item.salesRate} = {(itemCounts[item.id] || 0) * item.salesRate}</p>
+//               </div>
+//             </div>
+//           </div>
+
+//           {/* Increment and Decrement buttons */}
+//           <div className="w-[25%] h-full flex flex-row">
+//             <div className="w-full h-full bg-gray-200 flex justify-center items-center p-2">
+//               <button onClick={() => handleIncrement(item.id)} className="bg-green-600 rounded-md">
+//                 {/* Plus icon */}
+//               </button>
+//             </div>
+//             <div className="w-full h-full bg-gray-200 flex justify-center items-center rounded-r-md p-2">
+//               <button disabled={!itemCounts[item.id] || itemCounts[item.id] <= 0} onClick={() => handleDecrement(item.id)} className="bg-red-600 rounded-md">
+//                 {/* Minus icon */}
+//               </button>
+//             </div>
+//           </div>
+
+//           {/* Remove button */}
+//           <div className="w-[5%] h-full bg-gray-200 flex justify-center items-center p-2">
+//             <button onClick={() => handleRemoveItem(item.id)} className="bg-blue-600 rounded-md">
+//               {/* Remove icon */}
+//             </button>
+//           </div>
+//         </div>
+//       ))}
+//     </div>
+//   );
+// };
+
+// export default MyComponent;
+
+
+// import React, { useState } from 'react';
+
+// const MyComponent = () => {
+//   const [items, setItems] = useState([
+//     { id: 1, itemName: 'Item 1', salesRate: 10 },
+//     { id: 2, itemName: 'Item 2', salesRate: 20 },
+//     // Add more items as needed
+//   ]);
+
+//   const [itemCounts, setItemCounts] = useState({});
+
+//   const handleIncrement = (id) => {
+//     const newCount = itemCounts[id] ? itemCounts[id] + 1 : 1;
+//     const updatedCounts = { ...itemCounts, [id]: newCount };
+//     setItemCounts(updatedCounts);
+//   };
+
+//   const handleDecrement = (id) => {
+//     if (itemCounts[id] && itemCounts[id] > 0) {
+//       const updatedCounts = { ...itemCounts, [id]: itemCounts[id] - 1 };
+//       setItemCounts(updatedCounts);
+//     }
+//   };
+
+//   return (
+//     <div>
+//       {items.map((item) => (
+//         <div key={item.id} className="w-full h-[80px] flex justify-center items-center rounded-md">
+//           {/* Item details */}
+//           <div className="w-[75%] h-full bg-sky-100 rounded-l-md p-4">
+//             <div className="w-full h-full flex flex-col">
+//               <div className="w-full flex flex-col border-b">
+//                 <p className="text-xl text flex flex-col">{item.itemName}</p>
+//               </div>
+//               <div className="w-full h-full flex justify-center items-center">
+//                 <p className="">{itemCounts[item.id] || 0} x {item.salesRate} = {(itemCounts[item.id] || 0) * item.salesRate}</p>
+//               </div>
+//             </div>
+//           </div>
+
+//           {/* Increment and Decrement buttons */}
+//           <div className="w-[25%] h-full flex flex-row">
+//             <div className="w-full h-full bg-gray-200 flex justify-center items-center p-2">
+//               <button onClick={() => handleIncrement(item.id)} className="bg-green-600 rounded-md">
+//                 {/* Plus icon */}
+//               </button>
+//             </div>
+//             <div className="w-full h-full bg-gray-200 flex justify-center items-center rounded-r-md p-2">
+//               <button disabled={!itemCounts[item.id] || itemCounts[item.id] <= 0} onClick={() => handleDecrement(item.id)} className="bg-red-600 rounded-md">
+//                 {/* Minus icon */}
+//               </button>
+//             </div>
+//           </div>
+//         </div>
+//       ))}
+//     </div>
+//   );
+// };
+
+// export default MyComponent;
+
+
+// ...
+{items?.map((item, index) => (
+  <div
+    key={index}
+    className="w-full  flex justify-center items-center border-b border-[#80808075] rounded-md"
+  >
+    {/* ... */}
+    <p className="">{itemCounts[item.id] || 0} x {item.salesRate} = {(itemCounts[item.id] || 0) * item.salesRate}</p>
+    {/* ... */}
+    <button onClick={() => handleIncrement(item.id)} className="bg-green-600 rounded-md ">
+      {/* Plus icon */}
+    </button>
+    {/* ... */}
+    <button
+      disabled={!itemCounts[item.id] || itemCounts[item.id] <= 0} 
+      onClick={() => handleDecrement(item.id)}
+      className="bg-red-600 rounded-md"
+    >
+      {/* Minus icon */}
+    </button>
+    {/* ... */}
+  </div>
+))}
+// ...
